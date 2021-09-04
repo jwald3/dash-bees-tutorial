@@ -5,8 +5,8 @@ import plotly.graph_objects as go
 
 # dash-specific imports 
 import dash
-import dash_core_components as dcc # unlocks the UI components provided by Dash
-import dash_html_components as html # Python-ized HTML/CSS/Javascript components
+from dash import dcc # unlocks the UI components provided by Dash
+from dash import html # Python-ized HTML/CSS/Javascript components
 from dash.dependencies import Input, Output # utilized for callbacks
 
 app = dash.Dash(__name__) # initialize the app through Dash
@@ -40,7 +40,7 @@ app.layout = html.Div([
                     {"label":"2018","value": 2018}], # list is the set of k,v pairs of labels and values for the dropdown box
                     multi=False, # disable multiple choice
                     value=2015,  # default value
-                    style={'width':'40%'} # css styling
+                    style={'width':'60%'} # css styling
                     ),
 
     dcc.Dropdown(id="afft_by",
@@ -52,7 +52,7 @@ app.layout = html.Div([
                     {"label":"Varroa Mites","value": "Varroa_mites"}], 
                     multi=True, # disable multiple choice
                     value=["Disease","Other","Pesticides","Pests_excl_Varroa","Varroa_mites"],  # default value
-                    style={'width':'40%'} # css styling
+                    style={'width':'60%'} # css styling
                     ),
 
     html.Div(id='output_container', children=[]), # set an empty list to store the children objects into later
@@ -102,7 +102,8 @@ def update_graph(year_selected, affected_selected):
         color='Pct of Colonies Impacted', # the value to assign a color scale to
         hover_data=['State', 'Pct of Colonies Impacted'], # the data to appear on hover
         color_continuous_scale=px.colors.sequential.YlOrRd, # color scale to use
-        labels={'Pct of Colonies Impacted': '% of Bee Colonies'}
+        labels={'Pct of Colonies Impacted': '% of Bee Colonies'},
+        width=900
     )
 
     
