@@ -29,7 +29,7 @@ df.reset_index(inplace=True) # realign data
 app.layout = html.Div([
 
     # produce an h1 HTML element where arg1 is the text and arg2 is a key/value pair styling
-    html.H1("Web Application Dashboards with Dash", style={'text-align':'center'}),
+    html.H1("Percent of Bee Colonies Affected by Various Factors", style={'text-align':'center'}),
 
     # create a Dropdown component from Dash's core components library where each argument corresponds with attributes
     dcc.Dropdown(id="slct_year",
